@@ -38,12 +38,20 @@ public class BibliotecaAppTest {
     public void should_display_list_of_books() {
         bibliotecaApp.displayListOfBooks();
 
-        assertEquals("Harry Potter and the Deathly Hallows\nFifty Shades of Grey", outContent.toString().trim());
+        assertEquals("Title                                   Author              Year                \n" +
+                "Harry Potter and the Deathly Hallows    J.K. Rowling        2007                \n" +
+                "Fifty Shades of Grey                    E.L. James          2011", outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_tabulate_header(){
+        assertEquals("Title                                   Author              Year                ", bibliotecaApp.tabulateHeader());
     }
 
     @Test
     public void should_tabulate_fields_with_tabs(){
 
-        assertEquals("Harry Potter and the Deathly Hallows\tJ.K. Rowling\t2007\nFifty Shades of Grey\tE.L. James\t2011", bibliotecaApp.tabulateBooks());
+        assertEquals("Harry Potter and the Deathly Hallows    J.K. Rowling        2007                \n" +
+                "Fifty Shades of Grey                    E.L. James          2011                ", bibliotecaApp.tabulateBooks());
     }
 }
