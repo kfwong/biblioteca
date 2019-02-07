@@ -20,4 +20,6 @@ public class BookTest {
         assertEquals("author", book.getAuthor());
         assertEquals(2018, book.getYear());
     }
+
+
 }

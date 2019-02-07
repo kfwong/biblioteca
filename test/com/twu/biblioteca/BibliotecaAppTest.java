@@ -40,4 +40,10 @@ public class BibliotecaAppTest {
 
         assertEquals("Harry Potter and the Deathly Hallows\nFifty Shades of Grey", outContent.toString().trim());
     }
+
+    @Test
+    public void should_tabulate_fields_with_tabs(){
+
+        assertEquals("Harry Potter and the Deathly Hallows\tJ.K. Rowling\t2007\nFifty Shades of Grey\tE.L. James\t2011", bibliotecaApp.tabulateBooks());
+    }
 }
