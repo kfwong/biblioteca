@@ -8,6 +8,8 @@ public class BibliotecaApp {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         bibliotecaApp.displayWelcomeMessage();
+
+        bibliotecaApp.displayListOfBooks();
     }
 
     public void displayWelcomeMessage(){
