@@ -14,6 +14,7 @@ public class BibliotecaAppTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private final BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
     @Before
     public void setUpStreams() {
@@ -27,10 +28,16 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_welcome_message() {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         bibliotecaApp.displayWelcomeMessage();
 
         assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!", outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_list_of_books() {
+        bibliotecaApp.displayListOfBooks();
+
+        assertEquals("Harry Potter and the Deathly Hallows\nFifty Shades of Grey", outContent.toString().trim());
     }
 }
