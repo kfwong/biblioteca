@@ -7,12 +7,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
-
 import static org.junit.Assert.*;
 
-public class BibliotecaAppTest {
+public class BibliotecaAppTest extends BaseTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -40,11 +38,12 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void should_display_welcome_message() {
+    public void should_display_welcome_message() throws Exception {
+        String expected = readTestResourceAsString("should_display_welcome_message.txt");
 
         bibliotecaApp.displayWelcomeMessage();
 
-        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!", outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim());
     }
 
     @Test
@@ -56,31 +55,32 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    @Ignore
-    public void should_not_display_invalid_menu(){
+    public void should_not_display_invalid_entry_in_menu(){
+        bibliotecaApp.displayMenu();
 
+        assertFalse(outContent.toString().contains("Invalid"));
     }
 
     @Test
-    public void should_display_list_of_books() {
+    public void should_display_list_of_books() throws Exception {
+        String expected = readTestResourceAsString("should_display_list_of_books.txt");
+
         new ListAllBooksMenu().execute(bibliotecaApp);
 
-        assertEquals("Title                                   Author              Year                \n" +
-                "book1                                   author1             2000                \n" +
-                "book2                                   author2             1998", outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim());
     }
 
     @Test
-    public void should_display_list_of_books_when_select_menu_one(){
+    public void should_display_list_of_books_when_select_menu_one() throws Exception{
+        String expected = readTestResourceAsString("should_display_list_of_books_when_select_menu_one.txt");
+
         bibliotecaApp.displayMenu();
 
         outContent.reset();
 
         bibliotecaApp.selectMenu(1);
 
-        assertEquals("Title                                   Author              Year                \n" +
-                "book1                                   author1             2000                \n" +
-                "book2                                   author2             1998", outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim());
     }
 
     @Test
@@ -95,7 +95,9 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void should_display_only_available_books(){
+    public void should_display_only_available_books() throws Exception{
+        String expected = readTestResourceAsString("should_display_only_available_books.txt");
+
         assertTrue(library.isAvailable(book1));
 
         library.checkout(book1);
@@ -106,8 +108,7 @@ public class BibliotecaAppTest {
 
         new ListAllBooksMenu().execute(bibliotecaApp);
 
-        assertEquals("Title                                   Author              Year                \n" +
-                "book2                                   author2             1998", outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim());
 
     }
 }

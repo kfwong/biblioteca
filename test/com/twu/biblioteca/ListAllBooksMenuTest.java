@@ -9,10 +9,18 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class ListAllBooksMenuTest {
+public class ListAllBooksMenuTest extends BaseTest{
 
     private final ListAllBooksMenu listAllBooksMenu = new ListAllBooksMenu();
-    private final BibliotecaLibrary bibliotecaLibrary = new BibliotecaLibrary();
+
+    private Book book1 = new Book("book1", "author1", 2000);
+    private Book book2 = new Book("book2", "author2", 1998);
+    private final Library library = new Library() {
+        @Override
+        public Book[] getBookSource() {
+            return new Book[]{book1, book2};
+        }
+    };
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -28,23 +36,22 @@ public class ListAllBooksMenuTest {
     }
 
     @Test
-    public void should_display_tabulate_header(){
-        assertEquals("Title                                   Author              Year                ", listAllBooksMenu.tabulateHeader());
+    public void should_display_tabulate_header() throws Exception{
+        String expected = readTestResourceAsString("should_display_tabulate_header.txt");
+        assertEquals(expected, listAllBooksMenu.tabulateHeader());
     }
 
     @Test
-    public void should_tabulate_fields_with_tabs(){
-
-        assertEquals("Fifty Shades of Grey                    E.L. James          2011                \n" +
-                "Harry Potter and the Deathly Hallows    J.K. Rowling        2007                ", listAllBooksMenu.tabulateBooks(bibliotecaLibrary.availableBooks()));
+    public void should_tabulate_fields_with_tabs() throws Exception{
+        String expected = readTestResourceAsString("should_tabulate_fields_with_tabs.txt");
+        assertEquals(expected, listAllBooksMenu.tabulateBooks(library.availableBooks()));
     }
 
     @Test
-    public void should_display_list_of_books() {
-        listAllBooksMenu.displayListOfBooks(bibliotecaLibrary.availableBooks());
+    public void should_display_list_of_books() throws Exception {
+        String expected = readTestResourceAsString("should_display_list_of_books.txt");
+        listAllBooksMenu.displayListOfBooks(library.availableBooks());
 
-        assertEquals("Title                                   Author              Year                \n" +
-                "Fifty Shades of Grey                    E.L. James          2011                \n" +
-                "Harry Potter and the Deathly Hallows    J.K. Rowling        2007", outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim());
     }
 }

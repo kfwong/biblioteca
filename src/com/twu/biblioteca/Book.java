@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.Comparator;
-
 public class Book implements Comparable<Book> {
 
     private String title;

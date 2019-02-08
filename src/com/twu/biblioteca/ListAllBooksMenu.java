@@ -21,12 +21,12 @@ public class ListAllBooksMenu implements SelectableMenu {
 
     public String tabulateHeader() {
 
-        return String.format(TABULATE_HEADER_FORMAT, "Title", "Author", "Year");
+        return String.format(TABULATE_HEADER_FORMAT, "Title", "Author", "Year").trim();
     }
 
     public String tabulateBooks(Book[] books){
         return Arrays.asList(books).stream()
-                .map( book -> String.format(TABULATE_BOOKS_FORMAT, book.getTitle(), book.getAuthor(), book.getYear()))
+                .map( book -> String.format(TABULATE_BOOKS_FORMAT, book.getTitle(), book.getAuthor(), book.getYear()).trim())
                 .collect(Collectors.joining("\n"));
     }
 }
