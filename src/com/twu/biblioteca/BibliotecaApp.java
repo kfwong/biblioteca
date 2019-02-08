@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -53,20 +51,21 @@ public class BibliotecaApp {
 
         if(scanner.hasNextInt()){
             final int choice = scanner.nextInt();
-            selectMenu(choice);
+            final String params = scanner.nextLine().trim();
+            selectMenu(choice, params);
         }else {
             scanner.next();
             selectMenu(-1);
         }
     }
 
-    public void selectMenu(int index) {
+    public void selectMenu(int index, String... params) {
         final SelectableMenu menu = Arrays.stream(Menu.values())
                 .filter( m -> m.index == index)
                 .findFirst()
                 .orElse(Menu.INVALID)
                 .menu;
 
-        menu.execute(this);
+        menu.execute(this, params);
     }
 }

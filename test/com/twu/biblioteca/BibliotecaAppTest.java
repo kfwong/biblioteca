@@ -96,7 +96,7 @@ public class BibliotecaAppTest {
 
         assertTrue(library.isAvailable(book1));
 
-        library.checkout(book1);
+        library.checkOut(book1);
 
         outContent.reset();
 

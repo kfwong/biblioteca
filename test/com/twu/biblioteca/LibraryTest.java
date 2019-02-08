@@ -50,7 +50,7 @@ public class LibraryTest {
     public void should_checkout_book_successfully_if_available_in_record(){
         assertTrue(library.isAvailable(book1));
 
-        library.checkout(book1);
+        library.checkOut(book1);
 
         assertFalse(library.isAvailable(book1));
 
@@ -62,7 +62,7 @@ public class LibraryTest {
     public void should_checkout_book_unsucessfully_if_unavailable_in_record(){
         assertFalse(library.isAvailable(book3));
 
-        library.checkout(book3);
+        library.checkOut(book3);
 
         assertFalse(library.isAvailable(book3));
 
@@ -74,7 +74,7 @@ public class LibraryTest {
     public void should_checkin_book_successfully_if_unavailable_in_record(){
         assertFalse(library.isAvailable(book3));
 
-        library.checkin(book3);
+        library.checkIn(book3);
 
         assertTrue(library.isAvailable(book3));
     }

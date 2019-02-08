@@ -8,7 +8,7 @@ public abstract class Library {
 
     private SortedSet<Book> bookAvailability = new TreeSet<>(Arrays.asList(getBookSource()));
 
-    public void checkout(Book book) {
+    public void checkOut(Book book) {
         if(bookAvailability.remove(book)){
             System.out.println("Thank you! Enjoy the book");
         }else{
@@ -16,7 +16,7 @@ public abstract class Library {
         };
     }
 
-    public void checkin(Book book) {
+    public void checkIn(Book book) {
         bookAvailability.add(book);
     }
 
@@ -25,7 +25,7 @@ public abstract class Library {
     }
 
     public Book[] availableBooks(){
-        return bookAvailability.toArray(new Book[bookAvailability.size()]);
+        return bookAvailability.toArray(new Book[0]);
     }
 
     public Optional<Book> findBookByTitle(String title){

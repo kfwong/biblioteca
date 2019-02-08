@@ -4,17 +4,22 @@ import java.util.Optional;
 
 public class CheckOutMenu implements SelectableMenu {
     @Override
-    public void execute(BibliotecaApp context, String ...params) {
+    public void execute(BibliotecaApp context, String... params) {
         String bookTitle = params[0];
         Library library = context.getLibrary();
+
+        checkOut(library, bookTitle);
+
+    }
+
+    public void checkOut(Library library, String bookTitle){
 
         Optional<Book> book = library.findBookByTitle(bookTitle);
 
         if(book.isPresent()){
-            library.checkout(book.get());
+            library.checkOut(book.get());
         }else{
             System.out.println("Sorry, that book is unavailable");
         }
-
     }
 }
