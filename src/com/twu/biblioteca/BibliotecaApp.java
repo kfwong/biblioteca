@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -11,6 +12,7 @@ public class BibliotecaApp {
 
         bibliotecaApp.displayWelcomeMessage();
         bibliotecaApp.displayMenu();
+        bibliotecaApp.promptMenuChoice();
 
     }
 
@@ -24,16 +26,31 @@ public class BibliotecaApp {
 
     public void displayMenu(){
         for(int i = 0; i < Menu.values().length; i++){
-            System.out.println((i + 1) + ". " + Menu.values()[i].name);
+            final int index = i + 1;
+            Menu.values()[i].setIndex(index);
+            System.out.println(index + ". " + Menu.values()[i].name);
         }
 
     }
 
     public void promptMenuChoice(){
-        System.out.print("Your choice: ");
+        Scanner input = new Scanner(System.in);
+
+        while(true) {
+            System.out.print("Your choice: ");
+            final int choice = input.nextInt();
+
+            selectMenu(choice);
+        }
     }
 
-    public void selectMenu(SelectableMenu menu){
+    public void selectMenu(int index) {
+        final SelectableMenu menu = Arrays.stream(Menu.values())
+                .filter( m -> m.index == index)
+                .findFirst()
+                .orElse(Menu.INVALID)
+                .menu;
+
         menu.execute(this);
     }
 
