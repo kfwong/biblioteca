@@ -17,6 +17,6 @@ enum Menu {
     }
 
     public void setIndex(int index) {
-        if(this != INVALID) this.index = index;
+        if(this.isDisplayable) this.index = index;
     }
 }

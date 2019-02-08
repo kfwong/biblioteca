@@ -10,7 +10,7 @@ public class ListAllBooksMenu implements SelectableMenu {
     @Override
     public void execute(BibliotecaApp context) {
 
-        displayListOfBooks(context.getDataSource().getBooks());
+        displayListOfBooks(context.getLibrary().availableBooks());
 
     }
 

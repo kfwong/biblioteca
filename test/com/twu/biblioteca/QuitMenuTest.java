@@ -14,7 +14,7 @@ public class QuitMenuTest {
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
     private final QuitMenu quitMenu = new QuitMenu();
-    private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaDataSource());
+    private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary());
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;

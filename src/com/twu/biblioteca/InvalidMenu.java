@@ -4,6 +4,6 @@ public class InvalidMenu implements SelectableMenu {
 
     @Override
     public void execute(BibliotecaApp app) {
-        System.out.println("Invalid menu. Try again?");
+        System.out.println("Please select a valid option!");
     }
 }

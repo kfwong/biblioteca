@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private BibliotecaDataSource dataSource;
+    private Library library;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaDataSource());
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary());
 
         bibliotecaApp.displayWelcomeMessage();
 
@@ -20,8 +20,12 @@ public class BibliotecaApp {
 
     }
 
-    public BibliotecaApp(BibliotecaDataSource dataSource){
-        this.dataSource = dataSource;
+    public BibliotecaApp(Library libary){
+        this.library = libary;
+    }
+
+    public Library getLibrary() {
+        return library;
     }
 
     public void displayWelcomeMessage(){
@@ -61,9 +65,5 @@ public class BibliotecaApp {
                 .menu;
 
         menu.execute(this);
-    }
-
-    public BibliotecaDataSource getDataSource() {
-        return dataSource;
     }
 }

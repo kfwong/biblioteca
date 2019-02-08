@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
-public class Book {
+import java.util.Comparator;
+
+public class Book implements Comparable<Book> {
 
     private String title;
     private String author;
@@ -22,5 +24,10 @@ public class Book {
 
     public int getYear() {
         return year;
+    }
+
+    @Override
+    public int compareTo(Book other) {
+        return this.title.compareTo(other.title);
     }
 }

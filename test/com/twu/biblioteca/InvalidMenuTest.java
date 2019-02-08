@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class InvalidMenuTest {
     private final InvalidMenu invalidMenu = new InvalidMenu();
-    private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaDataSource());
+    private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary());
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -30,6 +30,6 @@ public class InvalidMenuTest {
     public void should_display_invalid_message(){
         invalidMenu.execute(bibliotecaApp);
 
-        assertEquals("Invalid menu. Try again?", outContent.toString().trim());
+        assertEquals("Please select a valid option!", outContent.toString().trim());
     }
 }
