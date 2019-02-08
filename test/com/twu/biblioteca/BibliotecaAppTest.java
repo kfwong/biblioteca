@@ -49,4 +49,11 @@ public class BibliotecaAppTest {
                 "Harry Potter and the Deathly Hallows    J.K. Rowling        2007                \n" +
                 "Fifty Shades of Grey                    E.L. James          2011", outContent.toString().trim());
     }
+
+    @Test
+    public void should_prompt_user_for_menu_choice(){
+        bibliotecaApp.promptMenuChoice();
+
+        assertEquals("Your choice: ", outContent.toString());
+    }
 }

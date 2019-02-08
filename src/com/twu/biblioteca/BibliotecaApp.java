@@ -29,6 +29,10 @@ public class BibliotecaApp {
 
     }
 
+    public void promptMenuChoice(){
+        System.out.print("Your choice: ");
+    }
+
     public void selectMenu(SelectableMenu menu){
         menu.execute(this);
     }
