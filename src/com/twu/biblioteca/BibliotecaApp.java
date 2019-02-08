@@ -8,11 +8,15 @@ public class BibliotecaApp {
     private BibliotecaDataSource dataSource;
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaDataSource());
 
         bibliotecaApp.displayWelcomeMessage();
-        bibliotecaApp.displayMenu();
-        bibliotecaApp.promptMenuChoice();
+
+        while(true) {
+            bibliotecaApp.displayMenu();
+            bibliotecaApp.promptMenuChoice(scanner);
+        }
 
     }
 
@@ -27,20 +31,25 @@ public class BibliotecaApp {
     public void displayMenu(){
         for(int i = 0; i < Menu.values().length; i++){
             final int index = i + 1;
-            Menu.values()[i].setIndex(index);
-            System.out.println(index + ". " + Menu.values()[i].name);
+            final Menu menu = Menu.values()[i];
+
+            if(menu.isDisplayable) {
+                menu.setIndex(index);
+                System.out.println(index + ". " + menu.name);
+            }
         }
 
     }
 
-    public void promptMenuChoice(){
-        Scanner input = new Scanner(System.in);
+    public void promptMenuChoice(Scanner scanner){
+        System.out.print("Your choice: ");
 
-        while(true) {
-            System.out.print("Your choice: ");
-            final int choice = input.nextInt();
-
+        if(scanner.hasNextInt()){
+            final int choice = scanner.nextInt();
             selectMenu(choice);
+        }else {
+            scanner.next();
+            selectMenu(-1);
         }
     }
 

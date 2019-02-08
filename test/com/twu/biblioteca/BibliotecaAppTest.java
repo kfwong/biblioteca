@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -45,6 +44,12 @@ public class BibliotecaAppTest {
         bibliotecaApp.displayMenu();
 
         assertEquals("1. List all books", outContent.toString().trim());
+    }
+
+    @Test
+    @Ignore
+    public void should_not_display_invalid_menu(){
+
     }
 
     @Test
