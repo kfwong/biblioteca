@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -76,5 +77,24 @@ public class LibraryTest {
         library.checkin(book3);
 
         assertTrue(library.isAvailable(book3));
+    }
+
+    @Test
+    public void should_return_existing_book(){
+        assertTrue(library.isAvailable(book1));
+
+        Optional<Book> book = library.findBookByTitle("book1");
+
+        assertTrue(book.isPresent());
+        assertEquals(book.get(), book1);
+    }
+
+    @Test
+    public void should_return_null_for_non_existing_book(){
+        assertFalse(library.isAvailable(book3));
+
+        Optional<Book> book = library.findBookByTitle("book3");
+
+        assertFalse(book.isPresent());
     }
 }

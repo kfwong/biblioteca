@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 enum Menu {
     LIST_ALL_BOOKS("List all books", new ListAllBooksMenu(), true),
+    CHECKOUT("Checkout book", new CheckOutMenu(), true),
     QUIT("Quit", new QuitMenu(), true),
     INVALID("Invalid menu", new InvalidMenu(), false);
 

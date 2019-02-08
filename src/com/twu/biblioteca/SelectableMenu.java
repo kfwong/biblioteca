@@ -2,5 +2,5 @@ package com.twu.biblioteca;
 
 public interface SelectableMenu {
 
-    void execute(BibliotecaApp context);
+    void execute(BibliotecaApp context, String ...args);
 }

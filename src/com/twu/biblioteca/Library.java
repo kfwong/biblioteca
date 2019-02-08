@@ -28,4 +28,10 @@ public abstract class Library {
         return bookAvailability.toArray(new Book[bookAvailability.size()]);
     }
 
+    public Optional<Book> findBookByTitle(String title){
+        return bookAvailability.stream()
+                .filter( book -> book.getTitle().equals(title))
+                .findFirst();
+    }
+
 }
