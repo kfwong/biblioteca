@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +9,13 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class BibliotecaAppTest {
+public class ListAllBooksMenuTest {
+
+    private final ListAllBooksMenu listAllBooksMenu = new ListAllBooksMenu();
+    private final BibliotecaDataSource dataSource = new BibliotecaDataSource();
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaDataSource());
 
     @Before
     public void setUpStreams() {
@@ -27,23 +28,20 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void should_display_welcome_message() {
-
-        bibliotecaApp.displayWelcomeMessage();
-
-        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!", outContent.toString().trim());
+    public void should_display_tabulate_header(){
+        assertEquals("Title                                   Author              Year                ", listAllBooksMenu.tabulateHeader());
     }
 
     @Test
-    public void should_display_menu(){
-        bibliotecaApp.displayMenu();
+    public void should_tabulate_fields_with_tabs(){
 
-        assertEquals("1. List all books", outContent.toString().trim());
+        assertEquals("Harry Potter and the Deathly Hallows    J.K. Rowling        2007                \n" +
+                "Fifty Shades of Grey                    E.L. James          2011                ", listAllBooksMenu.tabulateBooks(dataSource.getBooks()));
     }
 
     @Test
     public void should_display_list_of_books() {
-        bibliotecaApp.selectMenu(new ListAllBooksMenu());
+        listAllBooksMenu.displayListOfBooks(dataSource.getBooks());
 
         assertEquals("Title                                   Author              Year                \n" +
                 "Harry Potter and the Deathly Hallows    J.K. Rowling        2007                \n" +
