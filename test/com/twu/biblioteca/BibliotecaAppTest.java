@@ -8,21 +8,17 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static com.twu.biblioteca.TestUtils.readTestResourceAsString;
 import static org.junit.Assert.*;
 
-public class BibliotecaAppTest extends BaseTest {
+public class BibliotecaAppTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
-    private Book book1 = new Book("book1", "author1", 2000);
-    private Book book2 = new Book("book2", "author2", 1998);
-    private final Library library = new Library() {
-        @Override
-        public Book[] getBookSource() {
-            return new Book[]{book1, book2};
-        }
-    };
+    private final Library library = TestUtils.mockLibrary();
+    private Book book1 = library.getBookSource()[0];
 
     private BibliotecaApp bibliotecaApp;
 

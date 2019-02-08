@@ -7,20 +7,14 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static com.twu.biblioteca.TestUtils.readTestResourceAsString;
 import static org.junit.Assert.assertEquals;
 
-public class ListAllBooksMenuTest extends BaseTest{
+public class ListAllBooksMenuTest {
 
     private final ListAllBooksMenu listAllBooksMenu = new ListAllBooksMenu();
 
-    private Book book1 = new Book("book1", "author1", 2000);
-    private Book book2 = new Book("book2", "author2", 1998);
-    private final Library library = new Library() {
-        @Override
-        public Book[] getBookSource() {
-            return new Book[]{book1, book2};
-        }
-    };
+    private final Library library = TestUtils.mockLibrary();
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
