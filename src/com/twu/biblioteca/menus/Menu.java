@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.menus.*;
+
 enum Menu {
     LIST_ALL_BOOKS("List all books", new ListAllBooksMenu(), true),
     CHECKOUT("Checkout book", new CheckOutMenu(), true),

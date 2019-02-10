@@ -1,19 +1,17 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.menus.InvalidMenu;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class QuitMenuTest {
-    @Rule
-    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+import static org.junit.Assert.assertEquals;
 
-    private final QuitMenu quitMenu = new QuitMenu();
+public class InvalidMenuTest {
+    private final InvalidMenu invalidMenu = new InvalidMenu();
     private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary());
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -30,10 +28,9 @@ public class QuitMenuTest {
     }
 
     @Test
-    public void should_display_exit_message_and_exit(){
-        exit.expectSystemExitWithStatus(0);
+    public void should_display_invalid_message(){
+        invalidMenu.execute(bibliotecaApp);
 
-        quitMenu.execute(bibliotecaApp);
+        assertEquals("Please select a valid option!", outContent.toString().trim());
     }
-
 }

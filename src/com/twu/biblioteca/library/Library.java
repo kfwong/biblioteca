@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 public abstract class Library {
 
-    abstract Book[] getBookSource();
+    public abstract Book[] getBookSource();
 
     private SortedSet<Book> bookAvailability = new TreeSet<>(Arrays.asList(getBookSource()));
 

@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.menus.CheckOutMenu;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
