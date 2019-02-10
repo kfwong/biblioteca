@@ -6,7 +6,7 @@ import com.twu.biblioteca.Book;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class ListAllBooksMenu implements SelectableMenu {
+public class ListAllBooksMenu implements Menu {
     public static final String TABULATE_HEADER_FORMAT = "%-20s%-40s%-20s%-20s";
     public static final String TABULATE_BOOKS_FORMAT = "%-20d%-40s%-20s%-20d";
 

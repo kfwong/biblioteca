@@ -11,7 +11,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-public class CheckOutMenuTest {
+public class CheckOutMenuRegistryTest {
 
     private Book book1 = new Book("book1", "author1", 2000);
     private Book book2 = new Book("book2", "author2", 1998);

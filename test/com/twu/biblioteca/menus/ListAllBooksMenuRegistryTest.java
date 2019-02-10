@@ -12,7 +12,7 @@ import java.io.PrintStream;
 import static com.twu.biblioteca.TestUtils.readTestResourceAsString;
 import static org.junit.Assert.assertEquals;
 
-public class ListAllBooksMenuTest {
+public class ListAllBooksMenuRegistryTest {
 
     private final ListAllBooksMenu listAllBooksMenu = new ListAllBooksMenu();
 

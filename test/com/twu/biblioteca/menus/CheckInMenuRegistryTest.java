@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class CheckInMenuTest {
+public class CheckInMenuRegistryTest {
 
 
     private Book book1 = new Book("book1", "author1", 2000);

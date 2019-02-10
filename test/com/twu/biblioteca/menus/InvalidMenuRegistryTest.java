@@ -11,7 +11,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class InvalidMenuTest {
+public class InvalidMenuRegistryTest {
     private final InvalidMenu invalidMenu = new InvalidMenu();
     private final BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary());
 

@@ -1,8 +1,6 @@
 package com.twu.biblioteca.menus;
 
-import com.twu.biblioteca.menus.*;
-
-public enum Menu {
+public enum MenuRegistry {
     LIST_ALL_BOOKS("List all books", new ListAllBooksMenu(), true),
     CHECKOUT("Check Out book", new CheckOutMenu(), true),
     CHECKIN("Check In book", new CheckInMenu(), true),
@@ -10,11 +8,11 @@ public enum Menu {
     INVALID("Invalid menu", new InvalidMenu(), false);
 
     String name;
-    SelectableMenu menu;
+    Menu menu;
     int index;
     boolean isDisplayable;
 
-    Menu(String name, SelectableMenu menu, boolean isDisplayable) {
+    MenuRegistry(String name, Menu menu, boolean isDisplayable) {
         this.name = name;
         this.menu = menu;
         this.isDisplayable = isDisplayable;
@@ -28,7 +26,7 @@ public enum Menu {
         return name;
     }
 
-    public SelectableMenu getMenu() {
+    public Menu getMenu() {
         return menu;
     }
 

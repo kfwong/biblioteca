@@ -11,7 +11,7 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class QuitMenuTest {
+public class QuitMenuRegistryTest {
     @Rule
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 

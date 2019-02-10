@@ -2,8 +2,8 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.library.BibliotecaLibrary;
 import com.twu.biblioteca.library.Library;
+import com.twu.biblioteca.menus.MenuRegistry;
 import com.twu.biblioteca.menus.Menu;
-import com.twu.biblioteca.menus.SelectableMenu;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -44,9 +44,9 @@ public class BibliotecaApp {
     }
 
     public void displayMenu(){
-        for(int i = 0; i < Menu.values().length; i++){
+        for(int i = 0; i < MenuRegistry.values().length; i++){
             final int index = i + 1;
-            final Menu menu = Menu.values()[i];
+            final MenuRegistry menu = MenuRegistry.values()[i];
 
             if(menu.isDisplayable()) {
                 menu.setIndex(index);
@@ -70,10 +70,10 @@ public class BibliotecaApp {
     }
 
     public void selectMenu(int index, String... params) {
-        final SelectableMenu menu = Arrays.stream(Menu.values())
+        final Menu menu = Arrays.stream(MenuRegistry.values())
                 .filter( m -> m.getIndex() == index)
                 .findFirst()
-                .orElse(Menu.INVALID)
+                .orElse(MenuRegistry.INVALID)
                 .getMenu();
 
         menu.execute(this, params);
