@@ -33,4 +33,5 @@ Thank you! Enjoy the book
 
 ## Software Design Overview
 
+![design-diagram](https://github.com/kfwong/biblioteca/raw/master/biblioteca.png)
 
