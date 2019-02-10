@@ -20,6 +20,7 @@ public class BibliotecaApp {
         bibliotecaApp.displayWelcomeMessage();
 
         while(true) {
+            bibliotecaApp.displaySeparator("MENU");
             bibliotecaApp.displayMenu();
             bibliotecaApp.promptMenuChoice(scanner);
         }
@@ -32,6 +33,10 @@ public class BibliotecaApp {
 
     public Library getLibrary() {
         return library;
+    }
+
+    public void displaySeparator(String title){
+        System.out.println("========="+title+"===========");
     }
 
     public void displayWelcomeMessage(){

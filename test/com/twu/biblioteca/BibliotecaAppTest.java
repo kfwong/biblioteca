@@ -45,11 +45,12 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    @Ignore
-    public void should_display_menu(){
+    public void should_display_menu() throws Exception{
+        String expected = readTestResourceAsString("should_display_menu.txt");
+
         bibliotecaApp.displayMenu();
 
-        assertEquals("1. List all books", outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim());
     }
 
     @Test
