@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 
+import com.twu.biblioteca.library.Library;
+import com.twu.biblioteca.menus.ListAllBooksMenu;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;

@@ -1,6 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menus;
 
-import com.twu.biblioteca.menus.QuitMenu;
+import com.twu.biblioteca.BibliotecaApp;
+import com.twu.biblioteca.library.BibliotecaLibrary;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

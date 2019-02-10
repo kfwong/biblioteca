@@ -1,6 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menus;
 
-import com.twu.biblioteca.menus.ListAllBooksMenu;
+import com.twu.biblioteca.library.Library;
+import com.twu.biblioteca.TestUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

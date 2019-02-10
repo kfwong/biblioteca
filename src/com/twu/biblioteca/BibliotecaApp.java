@@ -1,5 +1,10 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.library.BibliotecaLibrary;
+import com.twu.biblioteca.library.Library;
+import com.twu.biblioteca.menus.Menu;
+import com.twu.biblioteca.menus.SelectableMenu;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -38,9 +43,9 @@ public class BibliotecaApp {
             final int index = i + 1;
             final Menu menu = Menu.values()[i];
 
-            if(menu.isDisplayable) {
+            if(menu.isDisplayable()) {
                 menu.setIndex(index);
-                System.out.println(index + ". " + menu.name);
+                System.out.println(index + ". " + menu.getName());
             }
         }
 
@@ -61,10 +66,10 @@ public class BibliotecaApp {
 
     public void selectMenu(int index, String... params) {
         final SelectableMenu menu = Arrays.stream(Menu.values())
-                .filter( m -> m.index == index)
+                .filter( m -> m.getIndex() == index)
                 .findFirst()
                 .orElse(Menu.INVALID)
-                .menu;
+                .getMenu();
 
         menu.execute(this, params);
     }

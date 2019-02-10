@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menus;
+
+import com.twu.biblioteca.BibliotecaApp;
+import com.twu.biblioteca.Book;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

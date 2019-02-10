@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menus;
+
+import com.twu.biblioteca.BibliotecaApp;
 
 public interface SelectableMenu {
 

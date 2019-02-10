@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.library;
+
+import com.twu.biblioteca.Book;
 
 public class BibliotecaLibrary extends Library {
     final static Book[] BOOKS = {
@@ -6,7 +8,7 @@ public class BibliotecaLibrary extends Library {
             new Book("Fifty Shades of Grey", "E.L. James", 2011)};
 
     @Override
-    Book[] getBookSource() {
+    public Book[] getBookSource() {
         return BOOKS;
     }
 }
