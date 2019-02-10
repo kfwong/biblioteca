@@ -6,10 +6,12 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class CheckOutMenuTest {
+public class CheckInMenuTest {
+
 
     private Book book1 = new Book("book1", "author1", 2000);
     private Book book2 = new Book("book2", "author2", 1998);
@@ -37,21 +39,32 @@ public class CheckOutMenuTest {
     }
 
     @Test
-    public void should_allow_checkout_existing_book(){
+    public void should_allow_return_valid_book() {
         assertTrue(library.isAvailable(book1));
 
-        new CheckOutMenu().checkOut(library, "book1");
+        library.checkOut(book1);
 
-        assertEquals("Thank you! Enjoy the book", outContent.toString().trim());
+        outContent.reset();
+
+        assertFalse(library.isAvailable(book1));
+
+        new CheckInMenu().checkIn(library, "book1");
+
+        assertTrue(library.isAvailable(book1));
+
+        assertEquals("Thank you for returning the book", outContent.toString().trim());
     }
 
     @Test
-    public void should_disallow_checkout_non_existing_book(){
+    public void should_not_allow_return_invalid_book(){
+        assertFalse(library.isAvailable(book3));
+        assertFalse(Arrays.stream(library.getBookSource()).anyMatch(b -> b.getTitle().equals("book3")));
+
+        new CheckInMenu().checkIn(library, "book3");
+
         assertFalse(library.isAvailable(book3));
 
-        new CheckOutMenu().checkOut(library, "book3");
-
-        assertEquals("Sorry, that book is unavailable", outContent.toString().trim());
+        assertEquals("This is not a valid book to return", outContent.toString().trim());
     }
 
 }

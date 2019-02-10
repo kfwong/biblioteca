@@ -14,7 +14,7 @@ public class CheckOutMenu implements SelectableMenu {
 
     public void checkOut(Library library, String bookTitle){
 
-        Optional<Book> book = library.findBookByTitle(bookTitle);
+        Optional<Book> book = library.findAvailableBookByTitle(bookTitle);
 
         if(book.isPresent()){
             library.checkOut(book.get());

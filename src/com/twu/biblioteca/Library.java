@@ -17,7 +17,11 @@ public abstract class Library {
     }
 
     public void checkIn(Book book) {
-        bookAvailability.add(book);
+        if(bookAvailability.add(book)){
+            System.out.println("Thank you for returning the book");
+        }else{
+            System.out.println("This is not a valid book to return");
+        }
     }
 
     public boolean isAvailable(Book book){
@@ -28,9 +32,15 @@ public abstract class Library {
         return bookAvailability.toArray(new Book[0]);
     }
 
-    public Optional<Book> findBookByTitle(String title){
+    public Optional<Book> findAvailableBookByTitle(String title){
         return bookAvailability.stream()
                 .filter( book -> book.getTitle().equals(title))
+                .findFirst();
+    }
+
+    public Optional<Book> findBookByTitle(String title){
+        return Arrays.stream(getBookSource())
+                .filter( b -> b.getTitle().equals(title))
                 .findFirst();
     }
 
