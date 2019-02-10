@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 public class CheckInMenu implements SelectableMenu {
