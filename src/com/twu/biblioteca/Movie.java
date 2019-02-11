@@ -1,13 +1,11 @@
 package com.twu.biblioteca;
 
-public class Book extends Item {
+public class Movie extends Item {
 
-    private String author;
     private int year;
 
-    public Book(String title, String author, int year) {
+    public Movie(String title, int year){
         super(title);
-        this.author = author;
         this.year = year;
     }
 
@@ -15,12 +13,7 @@ public class Book extends Item {
         return title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
     public int getYear() {
         return year;
     }
-
 }
