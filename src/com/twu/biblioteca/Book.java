@@ -23,7 +23,7 @@ public class Book extends Item {
 
     @Override
     public String displayFormat() {
-        final String BOOKS_FORMAT = "%-40s%-20s%-20d";
-        return String.format(BOOKS_FORMAT, title, author, year);
+        final String BOOK_FORMAT = "%-40s%-20s%-20d%-40s%-20s";
+        return String.format(BOOK_FORMAT, title, author, year, "-", "-");
     }
 }

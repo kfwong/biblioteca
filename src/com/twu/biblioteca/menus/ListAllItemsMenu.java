@@ -6,8 +6,8 @@ import com.twu.biblioteca.Item;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class ListAllBooksMenu implements Menu {
-    public static final String TABULATE_HEADER_FORMAT = "%-20s%-40s%-20s%-20s";
+public class ListAllItemsMenu implements Menu {
+    public static final String TABULATE_HEADER_FORMAT = "%-20s%-40s%-20s%-20s%-40s%-20s";
     public static final String TABULATE_FORMAT = "%-20d%s";
 
     @Override
@@ -24,7 +24,7 @@ public class ListAllBooksMenu implements Menu {
 
     public String tabulateHeader() {
 
-        return String.format(TABULATE_HEADER_FORMAT, "No.", "Title", "Author", "Year").trim();
+        return String.format(TABULATE_HEADER_FORMAT, "No.", "Title", "Author", "Year", "Director", "Rating").trim();
     }
 
     public String tabulateBooks(Item[] items){

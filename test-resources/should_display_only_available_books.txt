@@ -1,2 +1,2 @@
-No.                 Title                                   Author              Year
-1                   book2                                   author2             1998
+No.                 Title                                   Author              Year                Director                                Rating
+1                   book2                                   author2             1998                -                                       -

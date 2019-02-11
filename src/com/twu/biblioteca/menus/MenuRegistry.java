@@ -1,9 +1,9 @@
 package com.twu.biblioteca.menus;
 
 public enum MenuRegistry {
-    LIST_ALL_BOOKS("List all books", new ListAllBooksMenu(), true),
-    CHECKOUT("Check Out book", new CheckOutMenu(), true),
-    CHECKIN("Check In book", new CheckInMenu(), true),
+    LIST_ALL_BOOKS("List all items", new ListAllItemsMenu(), true),
+    CHECKOUT("Check out item", new CheckOutMenu(), true),
+    CHECKIN("Check in item", new CheckInMenu(), true),
     QUIT("Quit", new QuitMenu(), true),
     INVALID("Invalid menu", new InvalidMenu(), false);
 

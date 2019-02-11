@@ -12,9 +12,9 @@ import java.io.PrintStream;
 import static com.twu.biblioteca.TestUtils.readTestResourceAsString;
 import static org.junit.Assert.assertEquals;
 
-public class ListAllBooksMenuRegistryTest {
+public class ListAllItemsMenuRegistryTest {
 
-    private final ListAllBooksMenu listAllBooksMenu = new ListAllBooksMenu();
+    private final ListAllItemsMenu listAllItemsMenu = new ListAllItemsMenu();
 
     private final Library library = TestUtils.mockLibrary();
 
@@ -34,19 +34,19 @@ public class ListAllBooksMenuRegistryTest {
     @Test
     public void should_display_tabulate_header() throws Exception{
         String expected = readTestResourceAsString("should_display_tabulate_header.txt");
-        assertEquals(expected, listAllBooksMenu.tabulateHeader());
+        assertEquals(expected, listAllItemsMenu.tabulateHeader());
     }
 
     @Test
     public void should_tabulate_fields_with_tabs() throws Exception{
         String expected = readTestResourceAsString("should_tabulate_fields_with_tabs.txt");
-        assertEquals(expected, listAllBooksMenu.tabulateBooks(library.availableItems()));
+        assertEquals(expected, listAllItemsMenu.tabulateBooks(library.availableItems()));
     }
 
     @Test
     public void should_display_list_of_books() throws Exception {
         String expected = readTestResourceAsString("should_display_list_of_books.txt");
-        listAllBooksMenu.displayListOfBooks(library.availableItems());
+        listAllItemsMenu.displayListOfBooks(library.availableItems());
 
         assertEquals(expected, outContent.toString().trim());
     }

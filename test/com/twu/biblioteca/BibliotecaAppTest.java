@@ -2,10 +2,9 @@ package com.twu.biblioteca;
 
 
 import com.twu.biblioteca.library.Library;
-import com.twu.biblioteca.menus.ListAllBooksMenu;
+import com.twu.biblioteca.menus.ListAllItemsMenu;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -64,7 +63,7 @@ public class BibliotecaAppTest {
     public void should_display_list_of_books() throws Exception {
         String expected = readTestResourceAsString("should_display_list_of_books.txt");
 
-        new ListAllBooksMenu().execute(bibliotecaApp);
+        new ListAllItemsMenu().execute(bibliotecaApp);
 
         assertEquals(expected, outContent.toString().trim());
     }
@@ -105,7 +104,7 @@ public class BibliotecaAppTest {
 
         assertFalse(library.isAvailable(book1));
 
-        new ListAllBooksMenu().execute(bibliotecaApp);
+        new ListAllItemsMenu().execute(bibliotecaApp);
 
         assertEquals(expected, outContent.toString().trim());
 

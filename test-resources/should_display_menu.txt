@@ -1,4 +1,4 @@
-1. List all books
-2. Check Out book
-3. Check In book
+1. List all items
+2. Check out item
+3. Check in item
 4. Quit
