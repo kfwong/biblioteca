@@ -7,7 +7,7 @@ import com.twu.biblioteca.library.Library;
 import java.util.Arrays;
 import java.util.Optional;
 
-public class CheckInMenu implements Menu {
+public class CheckInMenu implements Menu{
     @Override
     public void execute(BibliotecaApp context, String... params) {
         String bookTitle = params[0];

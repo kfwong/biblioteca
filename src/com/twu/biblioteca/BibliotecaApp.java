@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.auth.BibliotecaMembership;
+import com.twu.biblioteca.auth.Member;
+import com.twu.biblioteca.auth.Membership;
 import com.twu.biblioteca.library.BibliotecaLibrary;
 import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.menus.MenuRegistry;
@@ -12,10 +15,12 @@ public class BibliotecaApp {
 
     private Library library;
 
+    private Membership membership;
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary());
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary(), new BibliotecaMembership());
 
         bibliotecaApp.displayWelcomeMessage();
 
@@ -31,6 +36,11 @@ public class BibliotecaApp {
         this.library = libary;
     }
 
+    public BibliotecaApp(Library library, Membership membership){
+        this(library);
+        this.membership = membership;
+    }
+
     public Library getLibrary() {
         return library;
     }
@@ -41,6 +51,13 @@ public class BibliotecaApp {
 
     public void displayWelcomeMessage(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+    }
+
+    public void promptUserLibraryNumber(Scanner scanner){
+        System.out.println("Please enter your library number and password: ");
+
+        System.out.print("Library Number: ");
+
     }
 
     public void displayMenu(){
@@ -77,5 +94,11 @@ public class BibliotecaApp {
                 .getMenu();
 
         menu.execute(this, params);
+    }
+
+    public void login(String libraryNumber, String password){
+        membership.login(libraryNumber, password);
+
+        System.out.println("Welcome! You are logged in");
     }
 }

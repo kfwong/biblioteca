@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 
+import com.twu.biblioteca.auth.BibliotecaMembership;
+import com.twu.biblioteca.auth.Membership;
 import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.menus.ListAllItemsMenu;
 import com.twu.biblioteca.model.Item;
@@ -29,10 +31,13 @@ public class BibliotecaAppTest {
 
     private BibliotecaApp bibliotecaApp;
 
+    private Membership membership = new BibliotecaMembership();
+
     @Before
     public void setUp() {
         System.setOut(new PrintStream(outContent));
-        bibliotecaApp = new BibliotecaApp(mixLibrary);
+        bibliotecaApp = new BibliotecaApp(mixLibrary, membership);
+
     }
 
     @After
@@ -81,7 +86,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_list_of_books() throws Exception {
-        bibliotecaApp = new BibliotecaApp(bookLibrary);
+        bibliotecaApp = new BibliotecaApp(bookLibrary, membership);
 
         String expected = readTestResourceAsString("should_display_list_of_books.txt");
 
@@ -92,7 +97,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_list_of_books_when_select_menu_one() throws Exception{
-        bibliotecaApp = new BibliotecaApp(bookLibrary);
+        bibliotecaApp = new BibliotecaApp(bookLibrary, membership);
 
         String expected = readTestResourceAsString("should_display_list_of_books_when_select_menu_one.txt");
 
@@ -107,7 +112,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_only_available_books() throws Exception{
-        bibliotecaApp = new BibliotecaApp(bookLibrary);
+        bibliotecaApp = new BibliotecaApp(bookLibrary, membership);
 
         String expected = readTestResourceAsString("should_display_only_available_books.txt");
 
@@ -127,7 +132,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_list_of_movies() throws Exception {
-        bibliotecaApp = new BibliotecaApp(movieLibrary);
+        bibliotecaApp = new BibliotecaApp(movieLibrary, membership);
 
         String expected = readTestResourceAsString("should_display_list_of_movies.txt");
 
@@ -138,7 +143,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_list_of_movies_when_select_menu_one() throws Exception{
-        bibliotecaApp = new BibliotecaApp(movieLibrary);
+        bibliotecaApp = new BibliotecaApp(movieLibrary, membership);
 
         String expected = readTestResourceAsString("should_display_list_of_movies_when_select_menu_one.txt");
 
@@ -153,7 +158,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_only_available_movies() throws Exception{
-        bibliotecaApp = new BibliotecaApp(movieLibrary);
+        bibliotecaApp = new BibliotecaApp(movieLibrary, membership);
 
         String expected = readTestResourceAsString("should_display_only_available_movies.txt");
 
@@ -169,5 +174,12 @@ public class BibliotecaAppTest {
 
         assertEquals(expected, outContent.toString().trim());
 
+    }
+
+    @Test
+    public void should_login_successfully(){
+        bibliotecaApp.login("000-0000", "000");
+
+        assertEquals("Welcome! You are logged in", outContent.toString().trim());
     }
 }
