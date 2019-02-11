@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.model.Item;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -24,6 +25,6 @@ public class ItemTest {
     @Test
     public void should_be_able_to_read_title_field(){
 
-        assertEquals("item1", item.title);
+        assertEquals("item1", item.getTitle());
     }
 }

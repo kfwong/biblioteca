@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.model;
 
 public abstract class Item implements Comparable<Item>{
 

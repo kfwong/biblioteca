@@ -1,6 +1,6 @@
 package com.twu.biblioteca.menus;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.library.Library;
 import org.junit.After;
 import org.junit.Before;

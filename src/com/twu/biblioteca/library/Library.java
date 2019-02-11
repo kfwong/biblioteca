@@ -1,7 +1,6 @@
 package com.twu.biblioteca.library;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Item;
+import com.twu.biblioteca.model.Item;
 
 import java.util.*;
 

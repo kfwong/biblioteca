@@ -1,8 +1,8 @@
 package com.twu.biblioteca.library;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Item;
-import com.twu.biblioteca.Movie;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Item;
+import com.twu.biblioteca.model.Movie;
 
 import java.util.stream.Stream;
 

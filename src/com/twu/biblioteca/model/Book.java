@@ -1,6 +1,4 @@
-package com.twu.biblioteca;
-
-import java.util.Arrays;
+package com.twu.biblioteca.model;
 
 public class Book extends Item {
 

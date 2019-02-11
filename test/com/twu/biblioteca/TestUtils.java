@@ -1,6 +1,9 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.library.Library;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Item;
+import com.twu.biblioteca.model.Movie;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
