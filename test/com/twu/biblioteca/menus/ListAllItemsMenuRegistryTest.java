@@ -9,14 +9,16 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static com.twu.biblioteca.TestUtils.readTestResourceAsString;
+import static com.twu.biblioteca.TestUtils.*;
 import static org.junit.Assert.assertEquals;
 
 public class ListAllItemsMenuRegistryTest {
 
     private final ListAllItemsMenu listAllItemsMenu = new ListAllItemsMenu();
 
-    private final Library library = TestUtils.mockLibrary();
+    private final Library booksLibrary = TestUtils.mockBookLibrary();
+    private final Library moviesLibrary = TestUtils.mockMovieLibrary();
+    private final Library mixLibrary = TestUtils.mockMixLibrary();
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -40,13 +42,29 @@ public class ListAllItemsMenuRegistryTest {
     @Test
     public void should_tabulate_fields_with_tabs() throws Exception{
         String expected = readTestResourceAsString("should_tabulate_fields_with_tabs.txt");
-        assertEquals(expected, listAllItemsMenu.tabulateBooks(library.availableItems()));
+        assertEquals(expected, listAllItemsMenu.tabulateBooks(booksLibrary.availableItems()));
     }
 
     @Test
     public void should_display_list_of_books() throws Exception {
         String expected = readTestResourceAsString("should_display_list_of_books.txt");
-        listAllItemsMenu.displayListOfBooks(library.availableItems());
+        listAllItemsMenu.displayListOfItems(booksLibrary.availableItems());
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_list_of_movies() throws Exception {
+        String expected = readTestResourceAsString("should_display_list_of_movies.txt");
+        listAllItemsMenu.displayListOfItems(moviesLibrary.availableItems());
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_list_of_mix_items() throws Exception{
+        String expected = readTestResourceAsString("should_display_list_of_mix_items.txt");
+        listAllItemsMenu.displayListOfItems(mixLibrary.availableItems());
 
         assertEquals(expected, outContent.toString().trim());
     }

@@ -13,11 +13,11 @@ public class ListAllItemsMenu implements Menu {
     @Override
     public void execute(BibliotecaApp context, String ...params) {
 
-        displayListOfBooks(context.getLibrary().availableItems());
+        displayListOfItems(context.getLibrary().availableItems());
 
     }
 
-    public void displayListOfBooks(Item[] items){
+    public void displayListOfItems(Item[] items){
         System.out.println(tabulateHeader());
         System.out.println(tabulateBooks(items));
     }
