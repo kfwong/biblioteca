@@ -1,42 +1,52 @@
 package com.twu.biblioteca.library;
 
 import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Item;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public abstract class Library {
 
-    public abstract Book[] getBookSource();
+    public abstract Item[] getItemSource();
 
-    private SortedSet<Book> bookAvailability = new TreeSet<>(Arrays.asList(getBookSource()));
+    private SortedSet<Item> itemAvailability = new TreeSet<>(Arrays.asList(getItemSource()));
 
-    public boolean checkOut(Book book) {
-        return bookAvailability.remove(book);
+    public boolean checkOut(Item item) {
+        return itemAvailability.remove(item);
     }
 
-    public boolean checkIn(Book book) {
-        return bookAvailability.add(book);
+    public boolean checkIn(Item item) {
+        return itemAvailability.add(item);
     }
 
-    public boolean isAvailable(Book book){
-        return bookAvailability.contains(book);
+    public boolean isAvailable(Item item){
+        return itemAvailability.contains(item);
     }
 
-    public Book[] availableBooks(){
-        return bookAvailability.toArray(new Book[0]);
+    public Item[] availableItems(){
+        return itemAvailability.toArray(new Item[0]);
     }
 
-    public Optional<Book> findAvailableBookByTitle(String title){
-        return bookAvailability.stream()
+    public Optional<Item> findAvailableItemByTitle(String title){
+        return itemAvailability.stream()
                 .filter( book -> book.getTitle().equals(title))
                 .findFirst();
     }
 
-    public Optional<Book> findBookByTitle(String title){
-        return Arrays.stream(getBookSource())
+    public Optional<Item> findItemByTitle(String title){
+        return Arrays.stream(getItemSource())
+                .filter( b -> b.getTitle().equals(title))
+                .findFirst();
+    }
+
+    public <T extends Item> Optional<T> findAvailableItemByTitle(String title, Collection<T> collection){
+        return collection.stream()
+                .filter( c -> c.getTitle().equals(title))
+                .findFirst();
+    }
+
+    public <T extends Item> Optional<T> findItemByTitle(String title, Collection<T> collection){
+        return collection.stream()
                 .filter( b -> b.getTitle().equals(title))
                 .findFirst();
     }

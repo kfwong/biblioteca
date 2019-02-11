@@ -20,7 +20,7 @@ public class TestUtils {
 
         return new Library() {
             @Override
-            public Book[] getBookSource() {
+            public Book[] getItemSource() {
                 return new Book[]{book1, book2};
             }
         };

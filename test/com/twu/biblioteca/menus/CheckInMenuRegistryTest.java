@@ -29,7 +29,7 @@ public class CheckInMenuRegistryTest {
         System.setOut(new PrintStream(outContent));
         this.library = new Library() {
             @Override
-            public Book[] getBookSource() {
+            public Book[] getItemSource() {
                 return new Book[]{book1, book2};
             }
         };
@@ -60,13 +60,13 @@ public class CheckInMenuRegistryTest {
     @Test
     public void should_not_allow_return_invalid_book(){
         assertFalse(library.isAvailable(book3));
-        assertFalse(Arrays.stream(library.getBookSource()).anyMatch(b -> b.getTitle().equals("book3")));
+        assertFalse(Arrays.stream(library.getItemSource()).anyMatch(b -> b.getTitle().equals("book3")));
 
         new CheckInMenu().checkIn(library, "book3");
 
         assertFalse(library.isAvailable(book3));
 
-        assertEquals("This is not a valid book to return", outContent.toString().trim());
+        assertEquals("This is not a valid item to return", outContent.toString().trim());
     }
 
 }

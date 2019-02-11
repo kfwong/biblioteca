@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Arrays;
+
 public class Book extends Item {
 
     private String author;
@@ -11,10 +13,6 @@ public class Book extends Item {
         this.year = year;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -23,4 +21,9 @@ public class Book extends Item {
         return year;
     }
 
+    @Override
+    public String displayFormat() {
+        final String BOOKS_FORMAT = "%-40s%-20s%-20d";
+        return String.format(BOOKS_FORMAT, title, author, year);
+    }
 }

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.library;
 
 import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Item;
 import com.twu.biblioteca.library.Library;
 import org.junit.After;
 import org.junit.Before;
@@ -27,7 +28,7 @@ public class LibraryTest {
         System.setOut(new PrintStream(outContent));
         this.library = new Library() {
             @Override
-            public Book[] getBookSource() {
+            public Book[] getItemSource() {
                 return new Book[]{book1, book2};
             }
         };
@@ -40,10 +41,10 @@ public class LibraryTest {
 
     @Test
     public void should_instantiate_with_two_books(){
-        assertEquals(2, library.availableBooks().length);
+        assertEquals(2, library.availableItems().length);
 
-        assertEquals("book1", library.availableBooks()[0].getTitle());
-        assertEquals("book2", library.availableBooks()[1].getTitle());
+        assertEquals("book1", library.availableItems()[0].getTitle());
+        assertEquals("book2", library.availableItems()[1].getTitle());
     }
 
     @Test
@@ -79,7 +80,7 @@ public class LibraryTest {
     public void should_return_existing_book(){
         assertTrue(library.isAvailable(book1));
 
-        Optional<Book> book = library.findAvailableBookByTitle("book1");
+        Optional<? super Book> book = library.findAvailableItemByTitle("book1");
 
         assertTrue(book.isPresent());
         assertEquals(book.get(), book1);
@@ -89,7 +90,7 @@ public class LibraryTest {
     public void should_return_null_for_non_existing_book(){
         assertFalse(library.isAvailable(book3));
 
-        Optional<Book> book = library.findAvailableBookByTitle("book3");
+        Optional<? super Book> book = library.findAvailableItemByTitle("book3");
 
         assertFalse(book.isPresent());
     }

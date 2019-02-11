@@ -27,7 +27,7 @@ public class CheckOutMenuRegistryTest {
         System.setOut(new PrintStream(outContent));
         this.library = new Library() {
             @Override
-            public Book[] getBookSource() {
+            public Book[] getItemSource() {
                 return new Book[]{book1, book2};
             }
         };
@@ -53,7 +53,7 @@ public class CheckOutMenuRegistryTest {
 
         new CheckOutMenu().checkOut(library, "book3");
 
-        assertEquals("Sorry, that book is unavailable", outContent.toString().trim());
+        assertEquals("Sorry, that item is unavailable", outContent.toString().trim());
     }
 
 }

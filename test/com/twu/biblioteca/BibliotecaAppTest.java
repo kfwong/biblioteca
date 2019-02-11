@@ -20,7 +20,7 @@ public class BibliotecaAppTest {
     private final PrintStream originalOut = System.out;
 
     private final Library library = TestUtils.mockLibrary();
-    private Book book1 = library.getBookSource()[0];
+    private Item book1 = library.getItemSource()[0];
 
     private BibliotecaApp bibliotecaApp;
 

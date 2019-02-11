@@ -40,13 +40,13 @@ public class ListAllBooksMenuRegistryTest {
     @Test
     public void should_tabulate_fields_with_tabs() throws Exception{
         String expected = readTestResourceAsString("should_tabulate_fields_with_tabs.txt");
-        assertEquals(expected, listAllBooksMenu.tabulateBooks(library.availableBooks()));
+        assertEquals(expected, listAllBooksMenu.tabulateBooks(library.availableItems()));
     }
 
     @Test
     public void should_display_list_of_books() throws Exception {
         String expected = readTestResourceAsString("should_display_list_of_books.txt");
-        listAllBooksMenu.displayListOfBooks(library.availableBooks());
+        listAllBooksMenu.displayListOfBooks(library.availableItems());
 
         assertEquals(expected, outContent.toString().trim());
     }

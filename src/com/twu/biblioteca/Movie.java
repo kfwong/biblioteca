@@ -9,11 +9,12 @@ public class Movie extends Item {
         this.year = year;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public int getYear() {
         return year;
+    }
+
+    @Override
+    public String displayFormat() {
+        return null;
     }
 }

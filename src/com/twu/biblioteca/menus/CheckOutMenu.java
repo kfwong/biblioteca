@@ -2,28 +2,32 @@ package com.twu.biblioteca.menus;
 
 import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Item;
 import com.twu.biblioteca.library.Library;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 public class CheckOutMenu implements Menu {
     @Override
     public void execute(BibliotecaApp context, String... params) {
-        String bookTitle = params[0];
+        String title = params[0];
         Library library = context.getLibrary();
 
-        checkOut(library, bookTitle);
+        checkOut(library, title);
 
     }
 
-    public void checkOut(Library library, String bookTitle){
+    public void checkOut(Library library, String title){
 
-        Optional<Book> book = library.findAvailableBookByTitle(bookTitle);
+        Optional<Item> item = library.findAvailableItemByTitle(title, Arrays.asList(library.getItemSource()));
 
-        if(book.isPresent() && library.checkOut(book.get())){
-            System.out.println("Thank you! Enjoy the book");
+
+        if(item.isPresent() && library.checkOut(item.get())){
+            String type = item.get().getClass().getSimpleName().toLowerCase();
+            System.out.println("Thank you! Enjoy the " + type);
         }else{
-            System.out.println("Sorry, that book is unavailable");
+            System.out.println("Sorry, that item is unavailable");
         }
     }
 }

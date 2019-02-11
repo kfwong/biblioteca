@@ -2,8 +2,10 @@ package com.twu.biblioteca.menus;
 
 import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Item;
 import com.twu.biblioteca.library.Library;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 public class CheckInMenu implements Menu {
@@ -18,12 +20,13 @@ public class CheckInMenu implements Menu {
 
     public void checkIn(Library library, String bookTitle){
 
-        Optional<Book> book = library.findBookByTitle(bookTitle);
+        Optional<Item> item = library.findItemByTitle(bookTitle, Arrays.asList(library.getItemSource()));
 
-        if(book.isPresent() && library.checkIn(book.get())){
-            System.out.println("Thank you for returning the book");
+        if(item.isPresent() && library.checkIn(item.get())){
+            String type = item.get().getClass().getSimpleName().toLowerCase();
+            System.out.println("Thank you for returning the "+ type);
         }else{
-            System.out.println("This is not a valid book to return");
+            System.out.println("This is not a valid item to return");
         }
     }
 }
