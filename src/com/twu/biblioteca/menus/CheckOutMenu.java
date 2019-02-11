@@ -20,8 +20,8 @@ public class CheckOutMenu implements Menu {
 
         Optional<Book> book = library.findAvailableBookByTitle(bookTitle);
 
-        if(book.isPresent()){
-            library.checkOut(book.get());
+        if(book.isPresent() && library.checkOut(book.get())){
+            System.out.println("Thank you! Enjoy the book");
         }else{
             System.out.println("Sorry, that book is unavailable");
         }

@@ -13,20 +13,12 @@ public abstract class Library {
 
     private SortedSet<Book> bookAvailability = new TreeSet<>(Arrays.asList(getBookSource()));
 
-    public void checkOut(Book book) {
-        if(bookAvailability.remove(book)){
-            System.out.println("Thank you! Enjoy the book");
-        }else{
-            System.out.println("Sorry, that book is unavailable");
-        };
+    public boolean checkOut(Book book) {
+        return bookAvailability.remove(book);
     }
 
-    public void checkIn(Book book) {
-        if(bookAvailability.add(book)){
-            System.out.println("Thank you for returning the book");
-        }else{
-            System.out.println("This is not a valid book to return");
-        }
+    public boolean checkIn(Book book) {
+        return bookAvailability.add(book);
     }
 
     public boolean isAvailable(Book book){

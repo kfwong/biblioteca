@@ -20,8 +20,8 @@ public class CheckInMenu implements Menu {
 
         Optional<Book> book = library.findBookByTitle(bookTitle);
 
-        if(book.isPresent()){
-            library.checkIn(book.get());
+        if(book.isPresent() && library.checkIn(book.get())){
+            System.out.println("Thank you for returning the book");
         }else{
             System.out.println("This is not a valid book to return");
         }
