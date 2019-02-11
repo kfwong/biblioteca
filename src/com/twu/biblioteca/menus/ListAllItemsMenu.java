@@ -6,7 +6,7 @@ import com.twu.biblioteca.model.Item;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class ListAllItemsMenu implements Menu {
+public class ListAllItemsMenu extends Menu {
     public static final String TABULATE_HEADER_FORMAT = "%-20s%-40s%-20s%-20s%-40s%-20s";
     public static final String TABULATE_FORMAT = "%-20d%s";
 

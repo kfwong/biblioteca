@@ -87,13 +87,23 @@ public class BibliotecaApp {
     }
 
     public void selectMenu(int index, String... params) {
-        final Menu menu = Arrays.stream(MenuRegistry.values())
+        final MenuRegistry menuEntry = Arrays.stream(MenuRegistry.values())
                 .filter( m -> m.getIndex() == index)
                 .findFirst()
-                .orElse(MenuRegistry.INVALID)
-                .getMenu();
+                .orElse(MenuRegistry.INVALID);
 
-        menu.execute(this, params);
+        final Menu menu = menuEntry.getMenu();
+
+        if(hasAuthentication(menuEntry)) {
+            menu.execute(this, params);
+        }else {
+            System.out.println("You must log in first");
+        }
+
+    }
+
+    public boolean hasAuthentication(MenuRegistry menuEntry){
+        return !menuEntry.isAuthenticable() || membership.isLoggedIn();
     }
 
     public void login(String libraryNumber, String password){

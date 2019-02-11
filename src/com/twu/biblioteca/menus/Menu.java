@@ -2,7 +2,7 @@ package com.twu.biblioteca.menus;
 
 import com.twu.biblioteca.BibliotecaApp;
 
-public interface Menu {
+public abstract class Menu {
 
-    void execute(BibliotecaApp context, String ...args);
+    public abstract void execute(BibliotecaApp context, String ...args);
 }

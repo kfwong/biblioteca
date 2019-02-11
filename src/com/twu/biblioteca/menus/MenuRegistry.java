@@ -1,21 +1,23 @@
 package com.twu.biblioteca.menus;
 
 public enum MenuRegistry {
-    LIST_ALL_BOOKS("List all items", new ListAllItemsMenu(), true),
-    CHECKOUT("Check out item", new CheckOutMenu(), true),
-    CHECKIN("Check in item", new CheckInMenu(), true),
-    QUIT("Quit", new QuitMenu(), true),
-    INVALID("Invalid menu", new InvalidMenu(), false);
+    LIST_ALL_BOOKS("List all items", new ListAllItemsMenu(), true, false),
+    CHECKOUT("Check out item", new CheckOutMenu(), true, true),
+    CHECKIN("Check in item", new CheckInMenu(), true, true),
+    QUIT("Quit", new QuitMenu(), true, false),
+    INVALID("Invalid menu", new InvalidMenu(), false, false);
 
     String name;
     Menu menu;
     int index;
     boolean isDisplayable;
+    boolean isAuthenticable;
 
-    MenuRegistry(String name, Menu menu, boolean isDisplayable) {
+    MenuRegistry(String name, Menu menu, boolean isDisplayable, boolean isAuthenticable) {
         this.name = name;
         this.menu = menu;
         this.isDisplayable = isDisplayable;
+        this.isAuthenticable = isAuthenticable;
     }
 
     public void setIndex(int index) {
@@ -32,6 +34,10 @@ public enum MenuRegistry {
 
     public boolean isDisplayable() {
         return isDisplayable;
+    }
+
+    public boolean isAuthenticable() {
+        return isAuthenticable;
     }
 
     public int getIndex() {

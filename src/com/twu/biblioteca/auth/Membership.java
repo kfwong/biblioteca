@@ -38,6 +38,10 @@ public abstract class Membership {
         return currentMember;
     }
 
+    public boolean isLoggedIn(){
+        return currentMember!= null;
+    }
+
     public boolean validateLibraryNumber(String libraryNumber){
         Pattern libraryNumberPattern = Pattern.compile("[a-zA-Z0-9]{3}-[a-zA-Z0-9]{4}");
         return libraryNumberPattern.matcher(libraryNumber).matches();

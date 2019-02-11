@@ -223,4 +223,34 @@ public class BibliotecaAppTest {
 
         assertEquals("Invalid logout", outContent.toString().trim());
     }
+
+    @Test
+    public void should_allow_check_out_item_when_logged_in(){
+        bibliotecaApp = new BibliotecaApp(mixLibrary, membership);
+
+        bibliotecaApp.login("000-0000", "000");
+
+        bibliotecaApp.displayMenu();
+
+        bibliotecaApp.selectMenu(1);
+
+        outContent.reset();
+
+        bibliotecaApp.selectMenu(2, "book1");
+
+        assertEquals("Thank you! Enjoy the book", outContent.toString().trim());
+    }
+
+    @Test
+    public void should_not_allow_check_out_item_when_logged_out(){
+        bibliotecaApp = new BibliotecaApp(mixLibrary, membership);
+
+        bibliotecaApp.displayMenu();
+
+        outContent.reset();
+
+        bibliotecaApp.selectMenu(2, "book1");
+
+        assertEquals("You must log in first", outContent.toString().trim());
+    }
 }
