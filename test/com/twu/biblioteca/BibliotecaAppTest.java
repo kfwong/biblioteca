@@ -18,15 +18,20 @@ public class BibliotecaAppTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
-    private final Library library = TestUtils.mockBookLibrary();
-    private Item book1 = library.getItemSource()[0];
+    private final Library bookLibrary = TestUtils.mockBookLibrary();
+    private Item book1 = bookLibrary.getItemSource()[0];
+
+    private final Library movieLibrary = TestUtils.mockMovieLibrary();
+    private Item movie1 = movieLibrary.getItemSource()[0];
+
+    private final Library mixLibrary = TestUtils.mockMixLibrary();
 
     private BibliotecaApp bibliotecaApp;
 
     @Before
     public void setUp() {
         System.setOut(new PrintStream(outContent));
-        bibliotecaApp = new BibliotecaApp(library);
+        bibliotecaApp = new BibliotecaApp(mixLibrary);
     }
 
     @After
@@ -36,6 +41,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_welcome_message() throws Exception {
+
         String expected = readTestResourceAsString("should_display_welcome_message.txt");
 
         bibliotecaApp.displayWelcomeMessage();
@@ -45,6 +51,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_menu() throws Exception{
+
         String expected = readTestResourceAsString("should_display_menu.txt");
 
         bibliotecaApp.displayMenu();
@@ -54,31 +61,10 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_not_display_invalid_entry_in_menu(){
+
         bibliotecaApp.displayMenu();
 
         assertFalse(outContent.toString().contains("Invalid"));
-    }
-
-    @Test
-    public void should_display_list_of_books() throws Exception {
-        String expected = readTestResourceAsString("should_display_list_of_books.txt");
-
-        new ListAllItemsMenu().execute(bibliotecaApp);
-
-        assertEquals(expected, outContent.toString().trim());
-    }
-
-    @Test
-    public void should_display_list_of_books_when_select_menu_one() throws Exception{
-        String expected = readTestResourceAsString("should_display_list_of_books_when_select_menu_one.txt");
-
-        bibliotecaApp.displayMenu();
-
-        outContent.reset();
-
-        bibliotecaApp.selectMenu(1);
-
-        assertEquals(expected, outContent.toString().trim());
     }
 
     @Test
@@ -93,16 +79,90 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void should_display_only_available_books() throws Exception{
-        String expected = readTestResourceAsString("should_display_only_available_books.txt");
+    public void should_display_list_of_books() throws Exception {
+        bibliotecaApp = new BibliotecaApp(bookLibrary);
 
-        assertTrue(library.isAvailable(book1));
+        String expected = readTestResourceAsString("should_display_list_of_books.txt");
 
-        library.checkOut(book1);
+        new ListAllItemsMenu().execute(bibliotecaApp);
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_list_of_books_when_select_menu_one() throws Exception{
+        bibliotecaApp = new BibliotecaApp(bookLibrary);
+
+        String expected = readTestResourceAsString("should_display_list_of_books_when_select_menu_one.txt");
+
+        bibliotecaApp.displayMenu();
 
         outContent.reset();
 
-        assertFalse(library.isAvailable(book1));
+        bibliotecaApp.selectMenu(1);
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_only_available_books() throws Exception{
+        bibliotecaApp = new BibliotecaApp(bookLibrary);
+
+        String expected = readTestResourceAsString("should_display_only_available_books.txt");
+
+        assertTrue(bookLibrary.isAvailable(book1));
+
+        bookLibrary.checkOut(book1);
+
+        outContent.reset();
+
+        assertFalse(bookLibrary.isAvailable(book1));
+
+        new ListAllItemsMenu().execute(bibliotecaApp);
+
+        assertEquals(expected, outContent.toString().trim());
+
+    }
+
+    @Test
+    public void should_display_list_of_movies() throws Exception {
+        bibliotecaApp = new BibliotecaApp(movieLibrary);
+
+        String expected = readTestResourceAsString("should_display_list_of_movies.txt");
+
+        new ListAllItemsMenu().execute(bibliotecaApp);
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_list_of_movies_when_select_menu_one() throws Exception{
+        bibliotecaApp = new BibliotecaApp(movieLibrary);
+
+        String expected = readTestResourceAsString("should_display_list_of_movies_when_select_menu_one.txt");
+
+        bibliotecaApp.displayMenu();
+
+        outContent.reset();
+
+        bibliotecaApp.selectMenu(1);
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    public void should_display_only_available_movies() throws Exception{
+        bibliotecaApp = new BibliotecaApp(movieLibrary);
+
+        String expected = readTestResourceAsString("should_display_only_available_movies.txt");
+
+        assertTrue(movieLibrary.isAvailable(movie1));
+
+        movieLibrary.checkOut(movie1);
+
+        outContent.reset();
+
+        assertFalse(movieLibrary.isAvailable(movie1));
 
         new ListAllItemsMenu().execute(bibliotecaApp);
 
