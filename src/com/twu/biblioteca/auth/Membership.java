@@ -34,7 +34,7 @@ public abstract class Membership {
 
         return true;
     }
-    public Member getCurrentMember(){
+    public Member getLoggedInMember(){
         return currentMember;
     }
 

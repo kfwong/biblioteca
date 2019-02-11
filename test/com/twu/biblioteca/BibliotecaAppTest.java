@@ -178,8 +178,49 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_login_successfully(){
+        assertNull(bibliotecaApp.getLoggedInMember());
+
         bibliotecaApp.login("000-0000", "000");
 
         assertEquals("Welcome! You are logged in", outContent.toString().trim());
+
+        assertNotNull(bibliotecaApp.getLoggedInMember());
+    }
+
+    @Test
+    public void should_login_failure(){
+        assertNull(bibliotecaApp.getLoggedInMember());
+
+        bibliotecaApp.login("123-4567", "123");
+
+        assertEquals("Invalid login", outContent.toString().trim());
+
+        assertNull(bibliotecaApp.getLoggedInMember());
+    }
+
+    @Test
+    public void should_logout_successfully(){
+        bibliotecaApp.login("000-0000", "000");
+
+        assertNotNull(bibliotecaApp.getLoggedInMember());
+
+        outContent.reset();
+
+        bibliotecaApp.logout();
+
+        assertEquals("You are logged out", outContent.toString().trim());
+
+        assertNull(bibliotecaApp.getLoggedInMember());
+    }
+
+    @Test
+    public void should_logout_failure(){
+        assertNull(bibliotecaApp.getLoggedInMember());
+
+        bibliotecaApp.logout();
+
+        assertNull(bibliotecaApp.getLoggedInMember());
+
+        assertEquals("Invalid logout", outContent.toString().trim());
     }
 }

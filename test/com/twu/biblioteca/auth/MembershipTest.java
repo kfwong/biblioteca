@@ -24,17 +24,17 @@ public class MembershipTest {
 
     @Test
     public void should_login_successfully_given_valid_credentials(){
-        assertNull(membership.getCurrentMember());
+        assertNull(membership.getLoggedInMember());
         assertTrue(membership.login("000-0000", "000"));
-        assertNotNull(membership.getCurrentMember());
-        assertEquals(membership.getCurrentMember().getMemberType(), MemberType.CUSTOMER);
+        assertNotNull(membership.getLoggedInMember());
+        assertEquals(membership.getLoggedInMember().getMemberType(), MemberType.CUSTOMER);
     }
 
     @Test
     public void should_not_login_given_invalid_credentials(){
-        assertNull(membership.getCurrentMember());
+        assertNull(membership.getLoggedInMember());
         assertFalse(membership.login("999-9999", "999"));
-        assertNull(membership.getCurrentMember());
+        assertNull(membership.getLoggedInMember());
     }
 
     @Test
@@ -48,11 +48,11 @@ public class MembershipTest {
     public void should_allow_signed_in_member_to_logout(){
         membership.login("111-1111", "111");
 
-        assertNotNull(membership.getCurrentMember());
+        assertNotNull(membership.getLoggedInMember());
 
         assertTrue(membership.logout());
 
-        assertNull(membership.getCurrentMember());
+        assertNull(membership.getLoggedInMember());
     }
 
     @Test

@@ -97,8 +97,22 @@ public class BibliotecaApp {
     }
 
     public void login(String libraryNumber, String password){
-        membership.login(libraryNumber, password);
+        if(membership.login(libraryNumber, password)){
+            System.out.println("Welcome! You are logged in");
+        }else{
+            System.out.println("Invalid login");
+        }
+    }
 
-        System.out.println("Welcome! You are logged in");
+    public void logout(){
+        if(membership.logout()){
+            System.out.println("You are logged out");
+        }else{
+            System.out.println("Invalid logout");
+        }
+    }
+
+    public Member getLoggedInMember(){
+        return membership.getLoggedInMember();
     }
 }
