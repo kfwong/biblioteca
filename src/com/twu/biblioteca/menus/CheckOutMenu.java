@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class CheckOutMenu extends Menu {
+
+
     @Override
     public void execute(BibliotecaApp context, String... params) {
         String title = params[0];

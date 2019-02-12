@@ -92,4 +92,21 @@ public class LibraryTest {
 
         assertFalse(book.isPresent());
     }
+
+    @Test
+    public void should_show_checked_out_items(){
+        assertEquals(2, library.availableItems().length);
+
+        assertTrue(library.isAvailable(book1));
+        assertTrue(library.isAvailable(book2));
+
+        library.checkOut(book1);
+
+        assertEquals(1, library.availableItems().length);
+        assertFalse(library.isAvailable(book1));
+        assertTrue(library.isAvailable(book2));
+
+        assertEquals(1, library.checkedOutItems().length);
+        assertEquals(book1, library.checkedOutItems()[0]);
+    }
 }

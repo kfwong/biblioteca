@@ -26,15 +26,18 @@ public abstract class Library {
         return itemAvailability.toArray(new Item[0]);
     }
 
+    public Item[] checkedOutItems() {
+        Set<Item> allItems = new HashSet<>(Arrays.asList(getItemSource()));
+        Set<Item> availableItems = itemAvailability;
+
+        allItems.removeAll(availableItems);
+
+        return allItems.toArray(new Item[0]);
+    }
+
     public Optional<Item> findAvailableItemByTitle(String title){
         return itemAvailability.stream()
                 .filter( book -> book.getTitle().equals(title))
-                .findFirst();
-    }
-
-    public Optional<Item> findItemByTitle(String title){
-        return Arrays.stream(getItemSource())
-                .filter( b -> b.getTitle().equals(title))
                 .findFirst();
     }
 
