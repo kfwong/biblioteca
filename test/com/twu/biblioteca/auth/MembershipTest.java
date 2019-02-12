@@ -8,8 +8,8 @@ import static org.junit.Assert.assertTrue;
 
 public class MembershipTest {
 
-    private Member customer = new Member( "000-0000", "000", MemberType.CUSTOMER);
-    private Member librarian = new Member("111-1111", "111", MemberType.LIBRARIAN);
+    private Member customer = new Member("000-0000", "000", MemberType.CUSTOMER, "Daenerys", "00000000", "daenerys@example.com");
+    private Member librarian = new Member("111-1111", "111", MemberType.LIBRARIAN, "John Snow", "11111111", "johnsnow@example.com");
     private final Membership membership = new Membership() {
         @Override
         public Member[] getMembers() {

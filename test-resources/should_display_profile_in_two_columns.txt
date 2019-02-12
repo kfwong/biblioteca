@@ -1,0 +1,5 @@
+Name                John Snow
+Email               johnsnow@example.com
+Phone               11111111
+Library Number      111-1111
+Member Type         LIBRARIAN
