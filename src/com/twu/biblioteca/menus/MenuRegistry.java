@@ -4,6 +4,8 @@ public enum MenuRegistry {
     LIST_ALL_BOOKS("List all items", new ListAllItemsMenu(), true, false),
     CHECKOUT("Check out item", new CheckOutMenu(), true, true),
     CHECKIN("Check in item", new CheckInMenu(), true, true),
+    LOGIN("Login", new LogInMenu(), true, false),
+    LOGOUT("Logout", new LogOutMenu(), true, false),
     QUIT("Quit", new QuitMenu(), true, false),
     INVALID("Invalid menu", new InvalidMenu(), false, false);
 

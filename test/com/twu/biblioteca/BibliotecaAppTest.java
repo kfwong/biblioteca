@@ -199,6 +199,19 @@ public class BibliotecaAppTest {
     }
 
     @Test
+    public void should_display_warning_if_already_logged_in(){
+        bibliotecaApp.login("000-0000", "000");
+
+        assertEquals("Welcome! You are logged in", outContent.toString().trim());
+
+        outContent.reset();
+
+        bibliotecaApp.login("000-0000", "000");
+
+        assertEquals("Already logged in", outContent.toString().trim());
+    }
+
+    @Test
     public void should_logout_successfully(){
         bibliotecaApp.login("000-0000", "000");
 

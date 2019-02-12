@@ -1,4 +1,6 @@
 1. List all items
 2. Check out item
 3. Check in item
-4. Quit
+4. Login
+5. Logout
+6. Quit

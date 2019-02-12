@@ -17,9 +17,10 @@ public class BibliotecaApp {
 
     private Membership membership;
 
+    private Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaLibrary(), new BibliotecaMembership());
 
         bibliotecaApp.displayWelcomeMessage();
@@ -27,7 +28,7 @@ public class BibliotecaApp {
         while(true) {
             bibliotecaApp.displaySeparator("MENU");
             bibliotecaApp.displayMenu();
-            bibliotecaApp.promptMenuChoice(scanner);
+            bibliotecaApp.promptMenuChoice(bibliotecaApp.scanner);
         }
 
     }
@@ -45,19 +46,16 @@ public class BibliotecaApp {
         return library;
     }
 
+    public Scanner getScanner() {
+        return scanner;
+    }
+
     public void displaySeparator(String title){
         System.out.println("========="+title+"===========");
     }
 
     public void displayWelcomeMessage(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-    }
-
-    public void promptUserLibraryNumber(Scanner scanner){
-        System.out.println("Please enter your library number and password: ");
-
-        System.out.print("Library Number: ");
-
     }
 
     public void displayMenu(){
@@ -107,6 +105,11 @@ public class BibliotecaApp {
     }
 
     public void login(String libraryNumber, String password){
+        if(membership.isLoggedIn()){
+            System.out.println("Already logged in");
+            return;
+        }
+
         if(membership.login(libraryNumber, password)){
             System.out.println("Welcome! You are logged in");
         }else{
